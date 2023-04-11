@@ -1,0 +1,245 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Portfólio - Laise Farias France</title>
+<style>
+
+/* CSS para NavBar */
+nav {
+  background-color: #f1f1f1;
+  width: 100%;
+  height: 50px;
+}
+
+nav ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  position: relative;
+  bottom: 10px;
+}
+
+nav ul li {
+  float: left;
+  display: block;
+}
+
+nav ul li a {
+  display: block;
+  text-decoration: none;
+  color: #555;
+  font-size: 16px;
+  padding: 15px;
+}
+
+nav ul li a:hover {
+  color: #000;
+  background-color: #ccc;
+}
+
+/* CSS para corpo principal da página */
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #f1f1f1;
+  font-family: arial;
+  font-size: 16px;
+  color: #555;
+}
+
+/* CSS para cabeçalho */
+header {
+  background-color: #f1f1f1;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+header h1 {
+  font-size: 24px;
+  font-weight: bold;
+  color: #555;
+  padding: 10px;
+}
+
+header h2 {
+  font-size: 18px;
+  font-weight: normal;
+  color: #555;
+  padding: 10px;
+}
+
+/* CSS para conteúdo principal */
+main {
+  width: 80%;
+  margin: 0 auto;
+  padding: 10px;
+  background-color: #f1f1f1;
+}
+
+/* CSS para listas de skills */
+ul.skills {
+  list-style-type: none;
+  padding: 0;
+  margin: 10px 0;
+}
+
+ul.skills li {
+  font-size: 14px;
+  padding: 5px;
+}
+
+ul.skills li i {
+  color: #555;
+  padding-right: 10px;
+}
+
+/* CSS para seção de projetos */
+.projects {
+  width: 100%;
+  padding: 10px;
+  background-color: #f1f1f1;
+  text-align: center;
+}
+
+.projects h2 {
+  font-size: 20px;
+  font-weight: bold;
+  color: #555;
+  padding: 10px;
+}
+
+/* CSS para fotos */
+.photos {
+  width: 100%;
+  padding: 10px;
+  background-color: #f1f1f1;
+  text-align: center;
+}
+
+.photos img {
+  width: 100%;
+  height: auto;
+  padding: 10px;
+}
+
+/* CSS para footer */
+footer {
+  width: 100%;
+  padding: 10px;
+  background-color: #f1f1f1;
+  text-align: center;
+}
+
+footer p {
+  font-size: 14px;
+  color: #555;
+}
+
+footer a {
+  font-size: 14px;
+  color: #555;
+}
+
+</style>
+</head>
+<body>
+
+<!-- Cabeçalho -->
+<header>
+  <h1>Laise Farias France</h1>
+  <h2>Desenvolvedora Java Full Stack</h2>
+</header>
+
+<!-- NavBar -->
+<nav>
+  <ul>
+    <li><a href="#">Home</a></li>
+    <li><a href="#">Sobre</a></li>
+    <li><a href="#">Skills</a></li>
+    <li><a href="#">Projetos</a></li>
+    <li><a href="#">Fotos</a></li>
+    <li><a href="#">Contatos</a></li>
+  </ul>
+</nav>
+
+<!-- Conteúdo principal -->
+<main>
+  <h2>Skills em Java</h2>
+  <ul class="skills">
+    <li><i class="fa fa-check"></i>Programação Orientada a Objetos</li>
+    <li><i class="fa fa-check"></i>Desenvolvimento de aplicações web</li>
+    <li><i class="fa fa-check"></i>Desenvolvimento de aplicações desktop</li>
+    <li><i class="fa fa-check"></i>Desenvolvimento de APIs</li>
+    <li><i class="fa fa-check"></i>Banco de dados relacionais</li>
+  </ul>
+  <h2>Soft Skills</h2>
+  <ul class="skills">
+    <li><i class="fa fa-check"></i>Trabalho em equipe</li>
+    <li><i class="fa fa-check"></i>Comunicação eficaz</li>
+    <li><i class="fa fa-check"></i>Gerenciamento eficaz do tempo</li>
+    <li><i class="fa fa-check"></i>Resolução de problemas</li>
+    <li><i class="fa fa-check"></i>Tomada de decisões</li>
+  </ul>
+
+  <!-- Seção de projetos -->
+  <div class="projects">
+    <h2>Projetos</h2>
+    <h3>Front-end</h3>
+    <ul class="skills">
+      <li><i class="fa fa-check"></i>Projeto X</li>
+      <li><i class="fa fa-check"></i>Projeto Y</li>
+    </ul>
+    <h3>Back-end</h3>
+    <ul class="skills">
+      <li><i class="fa fa-check"></i>Projeto A</li>
+      <li><i class="fa fa-check"></i>Projeto B</li>
+    </ul>
+    <h3>Java</h3>
+    <ul class="skills">
+      <li><i class="fa fa-check"></i>Projeto 1</li>
+      <li><i class="fa fa-check"></i>Projeto 2</li>
+    </ul>
+  </div>
+
+  <!-- Seção de fotos -->
+  <div class="photos">
+    <img src="foto1.jpg" alt="Foto 1">
+    <img src="foto2.jpg" alt="Foto 2">
+    <img src="foto3.jpg" alt="Foto 3">
+  </div>
+
+</main>
+
+<!-- Footer -->
+<footer>
+  <p>Laise Farias France - Desenvolvedora Java Full Stack<br>
+  Telefone: +55 11 98765-4321<br>
+  E-mail: laise.farias@email.com<br>
+  Endereço: Rua Alameda dos Anjos, 123 - São Paulo - SP</p>
+  <div id="map"></div>
+  <script>
+    function initMap() {
+      var myLatLng = {lat: -23.543, lng: -46.654};
+
+      var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 12,
+        center: myLatLng
+      });
+
+      var marker = new google.maps.Marker({
+        position: myLatLng,
+        map: map,
+        title: 'Laise Farias France'
+      });
+    }
+  </script>
+  <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=SUA_CHAVE_API_AQUI&callback=initMap">
+  alert()
+  
+  </script>
+</footer>
+
+</body>
+</html>
