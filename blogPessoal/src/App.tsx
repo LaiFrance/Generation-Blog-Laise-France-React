@@ -18,26 +18,31 @@ const useStyles = makeStyles({
         flexWrap: 'wrap',
         width: '100%'
     },
+    footer: {
+        marginTop: "100%",
+        width: '100%'
+    }
+
 });
 
 function App() {
   const classes = useStyles();
-  const [count, setCount] = useState(0)
+
 
   return (
-    
-    <BrowserRouter>
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/home" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="*" element={<h1>Not Found 404</h1>} />
-        <Route path="/cadastro" element={<CadastroUsuario />} />
-      </Routes>
-      <Footer />
-    </BrowserRouter>
+    <div className={classes.root}>
+      <BrowserRouter>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/cadastro" element={<CadastroUsuario />} />
+        </Routes>
+        <Footer className={classes.footer} />
+      </BrowserRouter>
+    </div>
   );
 }
+
 
 export default App;
