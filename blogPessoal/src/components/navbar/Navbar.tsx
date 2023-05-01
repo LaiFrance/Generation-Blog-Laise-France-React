@@ -1,6 +1,7 @@
 import React from 'react';
 import { AppBar, Toolbar, Typography } from '@material-ui/core';
 import {Box} from '@mui/material';
+import { Link } from 'react-router-dom';
 function Navbar() {
     return (
         <>
@@ -30,21 +31,28 @@ function Navbar() {
                             </Typography>
                         </Box>
                         <Box mx={1} style={{ cursor: "pointer" }}>
-                            <Typography variant="h6" color="inherit" onClick={() => window.location.href = "/cadastrar"}>
-                                cadastrar tema
+                            <Typography variant="h6" color="inherit" onClick={() => window.location.href = "/cadastro"}>
+                                cadastrar 
                             </Typography>
                         </Box>
                         <Box mx={1} style={{ cursor: "pointer" }}>
-                            <Typography variant="h6" color="inherit">
-                                logout
-                            </Typography>
-                        </Box>
-                    </Box>
+                            <Link to="/login" style={{ textDecoration: 'none', color: 'white' }}>
+                                <Box mx={1} style={{ cursor: "pointer" }}>
+                                    <Typography variant="h6" color="inherit">
+                                        Login
+                                    </Typography>
+                                    
+                                </Box>                            
+                            </Link>
+                            
 
+                         </Box>
+                    </Box>
                 </Toolbar>
             </AppBar>
         </>
-    )
+        
+    );
 }
 
 export default Navbar;
