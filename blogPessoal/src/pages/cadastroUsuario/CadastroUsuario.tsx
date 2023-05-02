@@ -99,7 +99,6 @@ export default function SignInSide() {
                 id="demo-simple-select"
                 label="Selecione o tipo de usuário"
                 name='tipoUsuario'
-                smallWidth
                 required
                 autoFocus
                 > 

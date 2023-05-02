@@ -12,6 +12,8 @@ import Grid from '@mui/material/Grid'
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined'
 import Typography from '@mui/material/Typography'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
+import Select from '@mui/material/Select'
+import { MenuItem } from '@mui/material'
 
 function Copyright(props: any) {
   return (
@@ -79,10 +81,12 @@ export default function SignInSide() {
             }}
           >
             <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-              <LockOutlinedIcon />
+              <LockOutlinedIcon /> 
             </Avatar>
+
             <Typography component="h1" variant="h5">
-              Sign in
+              
+            Login
             </Typography>
             <Box
               component="form"
@@ -90,6 +94,20 @@ export default function SignInSide() {
               onSubmit={handleSubmit}
               sx={{ mt: 1 }}
             >
+              <Select 
+                labelId="demo-simple-select-label"
+                id="demo-simple-select"
+                label="Selecione o tipo de usuário"
+                name='tipoUsuario'
+               
+                required
+                autoFocus
+                > 
+                <MenuItem value={0}></MenuItem>
+                <MenuItem value={1}>Administrador</MenuItem>
+                <MenuItem value={2}>Usuário</MenuItem>
+              </Select>
+
               <TextField
                 margin="normal"
                 required
@@ -110,6 +128,17 @@ export default function SignInSide() {
                 id="password"
                 autoComplete="current-password"
               />
+              <TextField 
+                margin="normal"
+                required
+                fullWidth
+                name="repetirSenha"
+                label="Repetir Senha"
+                type="password"
+                id="repetirSenha"
+                autoComplete="current-password"
+              />
+
               <FormControlLabel
                 control={<Checkbox value="remember" color="primary" />}
                 label="Remember me"
@@ -143,3 +172,4 @@ export default function SignInSide() {
     </ThemeProvider>
   )
 }
+

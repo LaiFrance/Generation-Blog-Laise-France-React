@@ -21,15 +21,16 @@ function Navbar() {
                             </Typography>
                         </Box>
                         <Box mx={1} style={{ cursor: "pointer" }}>
-                            <Typography variant="h6" color="inherit" onClick={() => window.location.href = "/postagens"}>
+                            <Typography variant="h6" color="inherit" onClick={() => window.location.href = "/posts"}>
                                 postagens
                             </Typography>
                         </Box>
                         <Box mx={1} style={{ cursor: "pointer" }}>
-                            <Typography variant="h6" color="inherit" onClick={() => window.location.href = "/tema"}>
+                            <Typography variant="h6" color="inherit" onClick={() => window.location.href = "/temas"}>
                                 temas
                             </Typography>
                         </Box>
+                        
                         <Box mx={1} style={{ cursor: "pointer" }}>
                             <Typography variant="h6" color="inherit" onClick={() => window.location.href = "/cadastro"}>
                                 cadastrar 
