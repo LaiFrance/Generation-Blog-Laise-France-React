@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export const api = axios.create({
-    baseURL: 'localhost:5000',
+    baseURL: 'http://localhost:4000/',
 })
 
     export const cadastroUsuario = async(url: any,dados: any,setDado: any) => { 
