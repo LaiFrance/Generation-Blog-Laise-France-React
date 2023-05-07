@@ -2,10 +2,11 @@ import React from 'react';
 import { AppBar, Toolbar, Typography } from '@material-ui/core';
 import {Box} from '@mui/material';
 import { Link } from 'react-router-dom';
+import { login } from './../../services/Service';
 function Navbar() {
     return (
         <>
-            <AppBar position="static">
+            <AppBar position="static" color="primary">
                 <Toolbar variant="dense">
                     <Box style={{ cursor: "pointer" }} >
                         <Typography variant="h5" color="inherit">
@@ -26,7 +27,7 @@ function Navbar() {
                             </Typography>
                         </Box>
                         <Box mx={1} style={{ cursor: "pointer" }}>
-                            <Typography variant="h6" color="inherit" onClick={() => window.location.href = "/temas"}>
+                            <Typography variant="h6" color="inherit" onClick={() => window.location.href = "/ListarTemas"}>
                                 temas
                             </Typography>
                         </Box>

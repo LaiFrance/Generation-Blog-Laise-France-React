@@ -4,6 +4,8 @@ import {Box} from '@mui/material';
 import { makeStyles } from '@material-ui/core/styles';
 import './Home.css';
 import imagehome from './home.png';
+import ModalPostagem from '../../components/postagens/modalPostagem/ModalPostagem';
+import TabPostagem from '../../components/postagens/tabpostagem/TabPostagem';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -82,17 +84,36 @@ function Home() {
             </Typography>
             <Typography variant="h5" gutterBottom color="textPrimary" component="h5" align="center" style={{ color: "white", fontWeight: "bold" }}>expresse aqui os seus pensamentos e opiniões!</Typography>
           </Box>
-          <Box className={classes.btnContainer}>
+          <Box display="flex" justifyContent="center">
             <Box marginRight={1}>
+              <ModalPostagem />
             </Box>
-            <Button variant="outlined" className={classes.btn}>Ver Postagens</Button>
+            <Button
+              variant="outlined"
+              style={{
+                borderColor: 'white',
+                backgroundColor: 'var(--blue-600)',
+                color: 'white',
+              }}
+            >
+              Ver Postagens
+            </Button>
           </Box>
         </Grid>
-        <Grid item xs={12} md={6} className={classes.imageContainer}>
-          <img src={imagehome} alt="imagem home" className={classes.image} />
+        <Grid item xs={6}>
+          <img
+            src= {imagehome }
+            alt=""
+            width={800}
+            height={700}
+            className='fotoHome'
+            
+          />
+        </Grid>
+        <Grid xs={12} style={{ backgroundColor: 'white' }}>
+         <TabPostagem />
         </Grid>
       </Grid>
-      <hr style={{backgroundColor: 'white'}} />
     </div>
   );
 }

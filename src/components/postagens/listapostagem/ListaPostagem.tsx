@@ -16,22 +16,22 @@ function ListaPostagem() {
     (state) => state.tokens
   );
 
-  useEffect(() => {
-    if (token == "") {
-      toast.error('Você precisa estar logado', {
-        position: "top-right",
-        autoClose: 2000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: false,
-        draggable: false,
-        theme: "colored",
-        progress: undefined,
-    });
-      navigate("/login")
+  // useEffect(() => {
+  //   if (token == "") {
+  //     toast.error('Você precisa estar logado', {
+  //       position: "top-right",
+  //       autoClose: 2000,
+  //       hideProgressBar: false,
+  //       closeOnClick: true,
+  //       pauseOnHover: false,
+  //       draggable: false,
+  //       theme: "colored",
+  //       progress: undefined,
+  //   });
+  //     navigate("/login")
 
-    }
-  }, [token])
+  //   }
+  // }, [token])
 
   async function getPost() {
     await busca("/postagens", setPosts, {
@@ -64,8 +64,9 @@ function ListaPostagem() {
                   {post.texto}
                 </Typography>
                 <Typography variant="body2" component="p">
-                  {post.tema?.descricao}
+                  
                 </Typography>
+                 
               </CardContent>
               <CardActions>
                 <Box display="flex" justifyContent="center" mb={1.5}>

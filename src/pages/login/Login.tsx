@@ -14,6 +14,7 @@ import Typography from '@mui/material/Typography'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
 import Select from '@mui/material/Select'
 import { MenuItem } from '@mui/material'
+import axios from 'axios'
 
 function Copyright(props: any) {
   return (
@@ -45,11 +46,83 @@ export default function SignInSide() {
     event.preventDefault()
     const data = new FormData(event.currentTarget)
     console.log({
+      //pegar valore do select
+      tipo: data.get('tipo')?.toString(),
       email: data.get('email'),
       password: data.get('password'),
+      repetirSenha: data.get('repetirSenha'),
+      remember: data.get('remember'),
     })
   }
 
+  const [tipo, setTipo] = React.useState('')
+  const handleChange = (event: React.ChangeEvent<{ value: unknown }>) => {
+    setTipo(event.target.value as string)
+  }
+
+  const [email, setEmail] = React.useState('')
+  const handleEmail = (event: React.ChangeEvent<{ value: unknown }>) => {
+    setEmail(event.target.value as string)
+  }
+
+  const [senha, setSenha] = React.useState('')
+  const handleSenha = (event: React.ChangeEvent<{ value: unknown }>) => {
+    setSenha(event.target.value as string)
+  }
+
+  const [repetirSenha, setRepetirSenha] = React.useState('')
+  const handleRepetirSenha = (
+    event: React.ChangeEvent<{ value: unknown }>
+  ) => {
+    setRepetirSenha(event.target.value as string)
+  }
+
+  const [remember, setRemember] = React.useState(false)
+  const handleRemember = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setRemember(event.target.checked)
+  }
+
+  const useLocalStorage = (key: string, initialValue: string) => {
+    const [storedValue, setStoredValue] = React.useState(() => {
+      try {
+        const item = window.localStorage.getItem(key)
+        return item ? JSON.parse(item) : initialValue
+      } catch (error) {
+        console.log(error)
+        return initialValue
+      }
+    })
+
+  axios.post("http://localhost:8080/usuario/logar", {
+    email: email, 
+    senha: senha
+  }).then((response) => {
+
+
+      localStorage.setItem("token", response.data.token)
+      localStorage.setItem("id", response.data.id)
+      localStorage.setItem("nome", response.data.nome)
+      localStorage.setItem("tipo", response.data.tipo)
+      localStorage.setItem("email", response.data.email)
+      localStorage.setItem("foto", response.data.foto)
+      localStorage.setItem("descricao", response.data.descricao)
+      localStorage.setItem("senha", response.data.senha)
+      localStorage.setItem("postagem", response.data.postagem)
+      localStorage.setItem("tema", response.data.tema)
+      
+      console.log(response.data)
+
+      if (response.data.tipo === "ADMIN") {
+        window.location.href = "/admin"
+      } else {
+        window.location.href = "/feed"
+      }
+    }).catch((error) => {
+      console.log(error)
+    })
+  }
+
+  
   return (
     <ThemeProvider theme={theme}>
       <Grid container component="main" sx={{ height: '100vh' }}>
@@ -95,18 +168,20 @@ export default function SignInSide() {
               sx={{ mt: 1 }}
             >
               <Select 
-                labelId="demo-simple-select-label"
-                id="demo-simple-select"
-                label="Selecione o tipo de usuário"
-                name='tipoUsuario'
-               
+                placeholder="Tipo"
+                type='select'
                 required
+                fullWidth
+                id="tipo"
+                label="Tipo"
+                name="tipo"
+                autoComplete="tipo"
                 autoFocus
-                > 
-                <MenuItem value={0}></MenuItem>
+              >
                 <MenuItem value={1}>Administrador</MenuItem>
                 <MenuItem value={2}>Usuário</MenuItem>
               </Select>
+
 
               <TextField
                 margin="normal"

@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import { Link } from 'react-router-dom'
-import {Card, CardActions, CardContent, Button, Typography } from '@material-ui/core';
+import {Card, CardActions, CardContent, Button, Typography, Select } from '@material-ui/core';
 import {Box} from '@mui/material';
 import Tema from '../../../models/Tema';
 import './ListaTema.css';
@@ -50,7 +50,7 @@ function ListaTema() {
   return (
     <>
     {
-      temas.map(tema =>(
+      temas.map(tema => (
       <Box m={2} >
         <Card variant="outlined">
           <CardContent>
@@ -58,7 +58,40 @@ function ListaTema() {
               Tema
             </Typography>
             <Typography variant="h5" component="h2">
-             {tema.descricao}
+              {tema.nome}
+            </Typography>
+            <Typography color="textSecondary">
+              {tema.descricao}
+            </Typography>
+            <Typography variant="body2" component="p">
+              {tema.postagens.map((postagem: { titulo: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | React.ReactFragment | React.ReactPortal | null | undefined; }) => (
+                <Typography color="textSecondary" gutterBottom>
+                  {postagem.titulo}
+                </Typography>
+              ))}
+              {
+                tema.postagens.length == 0 &&
+                <Typography color="textSecondary" gutterBottom>
+                  Não há postagens
+                </Typography>
+              }
+              {
+          
+            <Select native defaultValue="0" id="grouped-native-select">
+              <option aria-label="None" value="" />
+              <optgroup label="Group 1">
+                <option value={1}>Option 1</option>
+                <option value={2}>Option 2</option>
+              </optgroup>
+              <optgroup label="Group 2">
+                <option value={3}>Option 3</option>
+                <option value={4}>Option 4</option>
+              </optgroup>
+
+
+            </Select>
+              }
+            
             </Typography>
           </CardContent>
           <CardActions>
