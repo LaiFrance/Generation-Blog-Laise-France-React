@@ -20,9 +20,9 @@ function Footer() {
   const classes = useStyles();
 
   return (
-      <Grid container direction="row" justifyContent="center" alignItems="center">
+      <Grid>
         <Grid>
-          <div style={{ backgroundColor: "#3F51B5", height: "120px" }}>
+          <div style={{ backgroundColor: "#3F51B5", height: "200px", width: "100%" }}>
             <Box>
               <Typography variant="h5" align="center" gutterBottom style={{ color: "white" }}>Siga-nos nas redes sociais</Typography>
             </Box>
