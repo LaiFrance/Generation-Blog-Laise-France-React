@@ -44,10 +44,19 @@ function Navbar() {
                                     </Typography>
                                     
                                 </Box>                            
-                            </Link>
-                            
-
+                            </Link>  
                          </Box>
+                         <Box mx={1} style={{ cursor: "pointer" }}>
+                            <Link to="/logout" style={{ textDecoration: 'none', color: 'white' }}>
+                                <Box mx={1} style={{ cursor: "pointer" }}>
+                                    <Typography variant="h6" color="inherit" onClick={() => window.location.href = "/login"}>
+                                        Logout
+                                    </Typography>
+                                    </Box>
+                            </Link>
+                            </Box>
+
+
                     </Box>
                 </Toolbar>
             </AppBar>

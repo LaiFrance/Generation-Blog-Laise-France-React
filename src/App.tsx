@@ -1,68 +1,47 @@
-import { useState } from 'react';
-import './App.css'
-import Navbar from './components/navbar/Navbar'
-import Footer from './components/footer/Footer'
-import Home from './pages/home/Home'
-import { makeStyles } from '@material-ui/core/styles';
+import './App.css';
+import Navbar from './components/navbar/Navbar';
+import Footer from './components/footer/Footer';
+import Home from './pages/home/Home';
 import Login from './pages/login/Login';
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import CadastroUsuario from './pages/cadastroUsuario/CadastroUsuario';
-import ListaTema from './components/temas/listatema/ListaTema';
-import ListaPostagem from './components/postagens/listapostagem/ListaPostagem';
-import CadastroPost from './components/postagens/cadastroPost/CadastroPost';
+import ListaTemas from './components/temas/listatema/ListaTema';
+import ListaPostagens from './components/postagens/listapostagem/ListaPostagem';
 import CadastroTema from './components/temas/cadastroTema/CadastroTema';
-import DeletarPostagem from './components/postagens/deletarPostagem/DeletarPostagem';
 import DeletarTema from './components/temas/deletarTema/DeletarTema';
-import React from 'react';
-
-
-
-
-const useStyles = makeStyles({
-    root: {
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
-        flexWrap: 'wrap',
-        width: '100%'
-    },
-    footer: {
-        marginTop: "100%",
-        width: '100%'
-    }
-
-});
+import CadastroPostagem from './components/postagens/cadastroPostagem/CadastroPost';
+import DeletarPostagem from './components/postagens/deletarPostagem/DeletarPostagem';
+import { Provider } from 'react-redux';
+import store from './store/store';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
-  const classes = useStyles();
-
-
   return (
-    <div className={classes.root}>
+    <Provider store={store}>
+      <ToastContainer />
       <BrowserRouter>
         <Navbar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/home" element={<Home />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/cadastro" element={<CadastroUsuario />} />
-          <Route path="/cadastrousuario" element={<CadastroUsuario />} />
-          <Route path="/temas" element={<ListaTema />} />
-          <Route path="/posts" element={<ListaPostagem />} />
-          <Route path="/formularioPostagem" element={<CadastroPost />} />
-          <Route path="/formularioPostagem/:id" element={<CadastroPost />} />
-          <Route path="/formularioTema" element={<CadastroTema />} />
-          <Route path="/formularioTema/:id" element={<CadastroTema />} />
-          <Route path="/deletarPostagem/:id" element={<DeletarPostagem />} />
-          <Route path="/deletarTema/:id" element={<DeletarTema />} />
-          <Route path="*" element={<Login />} />
-        </Routes>
+        <div style={{ minHeight: '85vh' }}>
+          <Routes>
+            <Route path="/" element={<Login />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/home" element={<Home />} />
+            <Route path="/cadastrarUsuario" element={<CadastroUsuario />} />
+            <Route path="/temas" element={<ListaTemas />} />
+            <Route path="/postagens" element={<ListaPostagens />} />
+            <Route path="/cadastrarPostagem" element={<CadastroPostagem />} />
+            <Route path="/editarPostagem/:id" element={<CadastroPostagem />} />
+            <Route path="/apagarPostagem/:id" element={<DeletarPostagem />} />
+            <Route path="/cadastrarTema" element={<CadastroTema />} />
+            <Route path="/editarTema/:id" element={<CadastroTema />} />
+            <Route path="/deletarTema/:id" element={<DeletarTema />} />
+          </Routes>
+        </div>
         <Footer />
       </BrowserRouter>
-    </div>
+    </Provider>
   );
 }
-
 
 export default App;
