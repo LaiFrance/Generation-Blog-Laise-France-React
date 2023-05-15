@@ -137,15 +137,18 @@ Passo 6: Inicie o desenvolvimento do projeto
 
 ## Rotas
 
-| Método | Rota      | Descrição                                                                                                                                                     |
-|--------|-----------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| GET    | /home     | Rota inicial do blog, mostra os artigos recentes, categorias e usuário cadastrados                                                                              |
-| POST   | /login    | Rota para realizar o login de um usuário                                                                                                                       |
-| POST   | /cadastro | Rota para realizar o cadastro de um usuário                                                                                                                    |
-| GET    | /usuario     | Rota para mostrar as informações do usuário logado, os artigos postados, os temas criados e os comentarios realizados                                          |
-| POST   | /article  | Rota para realizar o post de um artigo                                                                                                                        |
-| PUT    | /article  | Rota para editar um artigo                                                                                                                                    |
-| DELETE | /article  | Rota para excluir um artigo                                                                                                                                    |
-| POST   | /comment  | Rota para realizar o post de um comentario                                                                                                                    |
-| PUT    | /comment  | Rota para editar um comentario                                                                                                                                 |
-| DELETE | /comment  | Rota para excluir um comentario                       
+| Rota           | Descrição                                                   |
+|----------------|--------------------------------------------------------------|
+| /              | Rota de Login                                                |
+| /login         | Rota de Login                                                |
+| /home          | Rota Inicial                                                 |
+| /blogpessoal   | Rota que exibe o blog do usuário                             |
+| /cadastro      | Rota para cadastro de usuário                                 |
+| /temas         | Rota que exibe todos os temas cadastrados                    |
+| /postagens     | Rota que exibe todas as postagens cadastradas                |
+| /cadastrarPostagem | Rota para cadastro de postagem                            |
+| /editarPostagem/:id | Rota para edição de postagem                              |
+| /apagarPostagem/:id | Rota para exclusão de postagem                            |
+| /cadastrarTema    | Rota para cadastro de tema                                 |
+| /editarTema/:id   | Rota para edição de tema                                    |
+| /deletarTema/:id  | Rota para exclusão de tema                                  |           
