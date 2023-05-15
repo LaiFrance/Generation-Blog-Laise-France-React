@@ -37,3 +37,16 @@ export const api = axios.create({
     export const deleteId = async(url: any,header: any) => { 
         await api.delete(url,header)
     }
+
+    export const getAll = async(url: any,setDado: any, header: any) => {
+        const resposta = await api.get(url,header)
+        setDado(resposta.data)
+    }
+
+    export const getById = async(url: any,setDado: any, header: any) => {
+        const resposta = await api.get(url,header)
+        setDado(resposta.data)
+    }
+
+    
+

@@ -1,8 +1,4 @@
-interface Tema{
-    nome: ReactNode;
-    postagens: any;
-    id: number;
-    descricao: string;
+export interface Tema {
+    id:number;
+    descricao:string;
 }
-
-export default Tema;
