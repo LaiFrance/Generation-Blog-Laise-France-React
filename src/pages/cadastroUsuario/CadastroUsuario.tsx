@@ -1,174 +1,185 @@
-import * as React from 'react'
-import Avatar from '@mui/material/Avatar'
-import Button from '@mui/material/Button'
-import CssBaseline from '@mui/material/CssBaseline'
-import TextField from '@mui/material/TextField'
-import FormControlLabel from '@mui/material/FormControlLabel'
-import Checkbox from '@mui/material/Checkbox'
-import Link from '@mui/material/Link'
-import Paper from '@mui/material/Paper'
-import Box from '@mui/material/Box'
-import Grid from '@mui/material/Grid'
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined'
-import Typography from '@mui/material/Typography'
-import { createTheme, ThemeProvider } from '@mui/material/styles'
-import Select from '@mui/material/Select'
-import { MenuItem } from '@mui/material'
+import React, {ChangeEvent, useEffect, useState} from 'react'
+import { Button, Divider, Grid, TextField, Typography } from '@material-ui/core'
+import { Box } from '@mui/material'
+import { Link, useNavigate } from 'react-router-dom'
+import Usuario  from '../../models/User'
+import { cadastroUsuario } from '../../services/Service'
+import './CadastroUsuario.css'
 
-function Copyright(props: any) {
-  return (
-    <Typography
-      variant="body2"
-      color="text.secondary"
-      align="center"
-      {...props}
-    >
-      {'© '}
-      <Link color="inherit" href="https://material-ui.com/">
-        BlogPessoal
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-      {'Desenvolvido por '}
-      <Link color="inherit" href="https://material-ui.com/">
-        Laise Farias France
-      </Link>{' '}
-      {'.'}
-    </Typography>
-  )
-}
+function CadastroUsuario(){
+    const history = useNavigate()
 
-const theme = createTheme()
-
-export default function SignInSide() {
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault()
-    const data = new FormData(event.currentTarget)
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
+    const [usuario, setUsuario] = useState<Usuario>({
+        id: 0,
+        nome: '',
+        usuario: '',
+        foto: '',
+        senha: ''
     })
-  }
+    
+    const [usuarioResult, setUsuarioResult] = useState<Usuario>({
+        id: 0,
+        nome: '',
+        usuario: '',
+        foto: '',
+        senha: ''
+    })
 
-  return (
-    <ThemeProvider theme={theme}>
-      <Grid container component="main" sx={{ height: '100vh' }}>
-        <CssBaseline />
-        <Grid
-          item
-          xs={false}
-          sm={4}
-          md={7}
-          sx={{
-            backgroundImage: 'url(https://i.ibb.co/MVqvsdJ/collage.png)',
-            backgroundRepeat: 'no-repeat',
-            backgroundColor: (t) =>
-              t.palette.mode === 'light'
-                ? t.palette.grey[50]
-                : t.palette.grey[900],
-            backgroundSize: 'max-width',
-            backgroundPosition: 'center',
-          }}
-        />
-        <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
-          <Box
-            sx={{
-              my: 8,
-              mx: 4,
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-            }}
-          >
-            <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-              <LockOutlinedIcon /> 
-            </Avatar>
+    const [confirmarSenha, setConfirmarSenha] = useState<String>('')
 
-            <Typography component="h1" variant="h5">
-              
-              Cadastro de Usuário
-            </Typography>
-            <Box
-              component="form"
-              noValidate
-              onSubmit={handleSubmit}
-              sx={{ mt: 1 }}
-            >
-              <Select 
-                labelId="demo-simple-select-label"
-                id="demo-simple-select"
-                label="Selecione o tipo de usuário"
-                name='tipoUsuario'
-                required
-                autoFocus
-                > 
-                <MenuItem value={0}></MenuItem>
-                <MenuItem value={1}>Administrador</MenuItem>
-                <MenuItem value={2}>Usuário</MenuItem>
-              </Select>
+    function confirmarSenhaHandle(event: ChangeEvent<HTMLInputElement>){
+        setConfirmarSenha(event.target.value)
+    }
 
-              <TextField
-                margin="normal"
-                required
-                fullWidth
-                id="email"
-                label="Email Address"
-                name="email"
-                autoComplete="email"
-                autoFocus
-              />
-              <TextField
-                margin="normal"
-                required
-                fullWidth
-                name="password"
-                label="Password"
-                type="password"
-                id="password"
-                autoComplete="current-password"
-              />
-              <TextField 
-                margin="normal"
-                required
-                fullWidth
-                name="repetirSenha"
-                label="Repetir Senha"
-                type="password"
-                id="repetirSenha"
-                autoComplete="current-password"
-              />
+    function updateModel(event: ChangeEvent<HTMLInputElement>) {
+        setUsuario({
+        ...usuario,
+        [event.target.name]: event.target.value
+        })
+    }
 
-              <FormControlLabel
-                control={<Checkbox value="remember" color="primary" />}
-                label="Remember me"
-              />
-              <Button
-                type="submit"
-                fullWidth
-                variant="contained"
-                sx={{ mt: 3, mb: 2 }}
-              >
-                
-                Login
-              </Button>
-              <Grid container component="main">
-                <Grid item xs>
-                  <Link href="#" variant="body2">
-                    Forgot password?
-                  </Link>
-                </Grid>
-                <Grid item>
-                  <Link href="/cadastrar" variant="body2">
-                    {"Don't have an account? Sign Up"}
-                  </Link>
-                </Grid>
-              </Grid>
-              <Copyright sx={{ mt: 5 }} />
-            </Box>
-          </Box>
+    async function onSubmit(event: ChangeEvent<HTMLFormElement>){
+        event.preventDefault()
+        if(confirmarSenha === usuario.senha) {
+            try {
+                await cadastroUsuario('/usuarios/cadastrar', usuario, setUsuarioResult)
+                alert('Usuário cadastrado com sucesso')
+            } catch (error) {
+                console.log(error)
+                alert('Por favor, verifique os campos')
+            }
+        } else {
+            alert('As senhas não coincidem')
+            setConfirmarSenha('')
+            setUsuario({
+                ...usuario,
+                senha: ''
+            })
+        }
+    }
+
+    useEffect(() => {
+        console.log('rodou')
+    }, [usuario.nome])
+
+    useEffect(() => {
+        if(usuarioResult.id !== 0) {
+            history('/login')
+            console.log(usuarioResult)
+        }
+    }, [usuarioResult])
+
+    function back() {
+        history('/login')
+    }
+
+    return(
+        <Grid container direction='row' justifyContent='center' alignItems='center'>
+            <Grid item xs={6} className='imagemCadastro'></Grid>
+            <Grid item xs={6} alignItems='center'>
+                <Box paddingX={10}>
+                    <form onSubmit={onSubmit} className="cadastro-form">
+                        <Typography
+                          variant='h3'
+                          gutterBottom
+                          color='textPrimary'
+                          component='h3'
+                          align='center'
+                          className='textosCadastrar'>Cadastrar
+                        </Typography>
+                        <TextField
+                            value={usuario.nome}
+                            onChange={(event: ChangeEvent<HTMLInputElement>) =>
+                            updateModel(event)}
+                          id='nome'
+                          label='nome'
+                          variant='outlined'
+                          name='nome'
+                          margin='normal'
+                          required
+                          fullWidth/>
+
+                        <TextField
+                            value={usuario.usuario}
+                            onChange={(event: ChangeEvent<HTMLInputElement>) =>
+                                updateModel(event)
+                            }
+                          id='usuario'
+                          label='usuário'
+                          variant='outlined'
+                          name='usuario'
+                          margin='normal'
+                          required
+                          type='email'
+                          fullWidth/>
+
+                        <TextField
+                            value={usuario.foto}
+                            onChange={(event: ChangeEvent<HTMLInputElement>) =>
+                                updateModel(event)
+                            }
+                          id='foto'
+                          label='Foto (URL)'
+                          variant='outlined'
+                          name='foto'
+                          margin='normal'
+                          fullWidth/>  
+
+                        <TextField
+                        value={usuario.senha}
+                        onChange={(event: ChangeEvent<HTMLInputElement>) =>
+                            updateModel(event)
+                        }
+                          id='senha'
+                          label='senha'
+                          variant='outlined'
+                          name='senha'
+                          margin='normal'
+                          required
+                          type='password'
+                          fullWidth />
+
+                        <TextField
+                            value={confirmarSenha}
+                            onChange={confirmarSenhaHandle}
+                          id='confirmarSenha'
+                          label='confirmar senha'
+                          variant='outlined'
+                          name='confirmarSenha'
+                          margin='normal'
+                          required
+                          type='password'
+                          fullWidth />
+
+
+                        <Button style={{marginTop: '10px'} }
+                          type='submit'
+                          variant='contained'
+                          color='primary'
+                          fullWidth
+                          className='btnCadastrar'
+                          >Cadastrar
+                        </Button>
+
+                        <Divider className='divider' />
+
+                        <Link to='/login' className='link'>
+                            <Button style={{marginTop: '10px'} }
+                              variant='contained'
+                              color='primary'
+                              fullWidth
+                              className='btnCadastrar'
+                              onClick={back}
+                              >Voltar
+                            </Button>
+                        </Link>
+                    </form>
+                </Box>
+            </Grid>
         </Grid>
-      </Grid>
-    </ThemeProvider>
-  )
+    )
 }
+
+export default CadastroUsuario
+
 

@@ -1,0 +1,48 @@
+.imagemCadastro {
+    background-image: url('https://images.unsplash.com/photo-1509023464722-e5b935586184');
+    background-position: center;
+    background-size: cover;
+    height: 100vh;
+  }
+  
+  .cadastro-form {
+    width: 100%;
+    max-width: 500px;
+    margin: auto;
+  }
+  
+  .textosCadastrar {
+    margin-top: 50px;
+    color: #5c6bc0;
+  }
+  
+  .btnCadastrar {
+    margin: 20px 0 10px;
+    background-color: #5c6bc0;
+    
+  }
+  
+  .btnCadastrar:hover {
+    background-color: #3949ab;
+  }
+  
+  .divider {
+    margin: 20px;
+  }
+  
+  .link {
+    text-decoration: none;
+  }
+  
+  .link:hover {
+    text-decoration: underline;
+  }
+  
+  .link > .btnCadastrar {
+    background-color: #7986cb;
+  }
+  
+  .link > .btnCadastrar:hover {
+    background-color: #5c6bc0;
+  }
+  
