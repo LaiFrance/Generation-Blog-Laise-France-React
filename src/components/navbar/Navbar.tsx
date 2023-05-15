@@ -39,6 +39,11 @@ function Navbar() {
                             </Typography>
                         </Box>
                         <Box mx={1} style={{ cursor: "pointer" }}>
+                            <Typography variant="h6" color="inherit" onClick={() => window.location.href = "/cadastrarTema"}>
+                                cadastrar tema
+                            </Typography>
+                        </Box>
+                        <Box mx={1} style={{ cursor: "pointer" }}>
                             <Link to="/login" style={{ textDecoration: 'none', color: 'white' }}>
                                 <Box mx={1} style={{ cursor: "pointer" }}>
                                     <Typography variant="h6" color="inherit">
