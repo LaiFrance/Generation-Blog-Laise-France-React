@@ -141,8 +141,8 @@ Passo 6: Inicie o desenvolvimento do projeto
 |--------|-----------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | GET    | /home     | Rota inicial do blog, mostra os artigos recentes, categorias e usuário cadastrados                                                                              |
 | POST   | /login    | Rota para realizar o login de um usuário                                                                                                                       |
-| POST   | /register | Rota para realizar o cadastro de um usuário                                                                                                                    |
-| GET    | /user     | Rota para mostrar as informações do usuário logado, os artigos postados, os temas criados e os comentarios realizados                                          |
+| POST   | /cadastro | Rota para realizar o cadastro de um usuário                                                                                                                    |
+| GET    | /usuario     | Rota para mostrar as informações do usuário logado, os artigos postados, os temas criados e os comentarios realizados                                          |
 | POST   | /article  | Rota para realizar o post de um artigo                                                                                                                        |
 | PUT    | /article  | Rota para editar um artigo                                                                                                                                    |
 | DELETE | /article  | Rota para excluir um artigo                                                                                                                                    |
